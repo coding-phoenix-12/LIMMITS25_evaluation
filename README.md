@@ -12,8 +12,8 @@ Run [limmits_latency_eval.py](limmits_latency_eval.py) to generate ``teamName_tr
 5. ``--device``: Use the device where you have synthesised your test audios. 
 
 ``teamName_trackX_latency_normaliser.json`` and ``teamName_trackX_latency.json`` should contain the data in the same format. For each synthesised file, we require the following values - 
-1. ``time_to_first_frame``
-2. ``time_to_last_frame``
-3. ``num_frames``
+1. ``time_to_first_frame``: Time taken to produce first output speech frame (this includes preprocessing, tokenizing and embedding the text and all operations leading to decoding first frame) 
+2. ``time_to_last_frame``: Time taken to produce last output speech frame (this is the time taken from first frame to last frame. If you are processing any text embeddings while continously producing frames, you should include it as well)
+3. ``num_frames``: Number of output frames generated
    
 You may refer to [limmits_latency_eval.py](limmits_latency_eval.py) on how to generate these values for your model, and how to save it.
