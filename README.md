@@ -24,11 +24,11 @@ Note: If you are using GPU to decode your model for the test set, use only 1 GPU
 
 
 
-
+ <br/><br/>
 
 **Bitrate** (for Tracks 2 and 3)
 
-We will also evaluate Bitrate as shown in the [challenge website](https://sites.google.com/view/limmits25/challenge/challenge-evaluation). For that we need one JSOn file from participants. Units JSON files for track 2 and 3  should be named  teamName_trackX_units.json. teamName should only contain English alphabets and numbers, without space or any special characters. You may use upper / lower case. You should maintain the same team names if you are submitting for multiple tracks. 
+We will also evaluate Bitrate as shown in the [challenge website](https://sites.google.com/view/limmits25/challenge/challenge-evaluation). For that we need one JSOn file from participants. Units JSON files for track 2 and 3  should be named  ``teamName_trackX_units.json``. ``teamName`` should only contain English alphabets and numbers, without space or any special characters. You may use upper / lower case. You should maintain the same team names if you are submitting for multiple tracks. 
 Example units file name - ``iisc_track2_units.json`` for track 2 and ``iisc_track3_units.json`` for track 3.
 
 	
