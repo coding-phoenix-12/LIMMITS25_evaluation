@@ -29,12 +29,12 @@ Note: If you are using GPU to decode your model for the test set, use only 1 GPU
 **Bitrate** (for Tracks 2 and 3)
 
 We will also evaluate Bitrate as shown in the [challenge website](https://sites.google.com/view/limmits25/challenge/challenge-evaluation). For that we need one JSOn file from participants. Units JSON files for track 2 and 3  should be named  teamName_trackX_units.json. teamName should only contain English alphabets and numbers, without space or any special characters. You may use upper / lower case. You should maintain the same team names if you are submitting for multiple tracks. 
-Example units file name - ``iisc_track2_units.json`` for track 2 and ``iisc_track3_units.json`` for track 3
+Example units file name - ``iisc_track2_units.json`` for track 2 and ``iisc_track3_units.json`` for track 3.
 
 	
 
-For Track 2, ``teamName_track2_units.json`` each entry will have a unique identifier which is the ``save_file_name`` field in the provided test file JSON. As attribute-specific units are required for track 2, the ``units`` field will contain a dictionary, with each key being an attribute name (e.g., prosody, content, acoustics). Each key’s value is a list of indices. These indices represent the quantised output from the codebook specific to that attribute. You can refer to the example [iisc_track2_units.json](iisc_track2_units.json).
+For Track 2, ``teamName_track2_units.json`` each entry will have a unique identifier which is the ``save_file_name`` field in the provided test file JSON. As attribute-specific units are required for track 2, the ``units`` field will contain a dictionary, with each key being an attribute name (e.g., prosody, content, acoustics). Each key’s value is a list of indices. These indices represent the quantised output from the codebook specific to that attribute. You can refer to the example [iisc_track2_units.json](iisc_track2_units.json)
 
 
 
-For Track 3, ``teamName_track3_units.json`` each entry will have a unique identifier which is the ``save_file_name`` field in the provided test file JSON. The ``units`` field will contain a dictionary, where each key is named ``vq1, vq2, ..., vqN``, corresponding to each of the ``N`` codebooks. Each key in the dictionary has a list of indices representing the quantized outputs for that specific codebook.	You can refer to the example [iisc_track3_units.json](iisc_track3_units.json)
+For Track 3, ``teamName_track3_units.json`` each entry will have a unique identifier which is the ``save_file_name`` field in the provided test file JSON. The ``units`` field will contain a dictionary, where each key is named ``vq1, vq2, ..., vqN``, corresponding to each of the ``N`` codebooks. Each key in the dictionary has a list of indices representing the quantized outputs for that specific codebook. You can refer to the example [iisc_track3_units.json](iisc_track3_units.json)
