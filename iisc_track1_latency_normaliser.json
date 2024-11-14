@@ -1,0 +1,12 @@
+{
+    "English_F-kn_m_books_continuous_00606-kn_m_weather_01008-kannada": {
+        "time_to_first_frame": 0.008191108703613281,
+        "time_to_last_frame": 0.3491630554199219,
+        "num_frames": 1057
+    },
+    "English_F-GUJ_SCIE_3132-GUJ_AGRI_8420-gujarathi": {
+        "time_to_first_frame": 0.007752418518066406,
+        "time_to_last_frame": 0.32239651679992676,
+        "num_frames": 1057
+    }
+}
