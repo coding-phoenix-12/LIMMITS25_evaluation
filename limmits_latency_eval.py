@@ -5,15 +5,18 @@ Author: Sathvik Udupa 2024
 """
 
 import os
+import re
 import json
 import time
 import argparse
 from pathlib import Path
 import torch, torchaudio
 
+
 parser = argparse.ArgumentParser(description='Script to extract normalizing latency')
 parser.add_argument("--test_set_generated_audios_path", required=True, type=str, help="Path to the synthesized audio files for challenge-track evaluation")
 parser.add_argument("--json_path", required=True, type=str, help="Path to the test set metadata json file") 
+parser.add_argument("--team_name", required=True, type=str, help="Your team name")
 parser.add_argument("--save_path", required=True, type=str, help="Path to the directory where the extracted latency will be saved")
 parser.add_argument("--device", default="cuda", type=str, help="Use the same GPU hardware that was used for test set synthesis")
 
@@ -45,6 +48,7 @@ def eval_():
     test_audio_files = [f for f in test_audio_files if f.endswith(TEST_AUDIO_EXTN)]
     assert Path(args.json_path).stem in ALLOWED_JSON_NAMES, f"Invalid json file name. Allowed names are {ALLOWED_JSON_NAMES}"
     assert os.path.exists(args.json_path), "Path to the test set metadata json file is invalid"
+    assert bool(re.fullmatch(r'[a-zA-Z0-9]+', args.team_name)), f"Invalid team name {args.team_name}. Team name should contain only alphabets and numbers"
     with open(args.json_path, "r") as f:
         metadata = json.load(f)
     save_names = [m["save_file_name"] for m in metadata]
@@ -101,13 +105,13 @@ def eval_():
             "time_to_last_frame": time_to_last_frame,
             "num_frames": num_frames,
         }
-    
-    with open(os.path.join(args.save_path, LATENCY_NORMALISER_SAVE_NAME), "w") as f:
+    save_file = "_".join((args.team_name, Path(args.json_path).stem, LATENCY_NORMALISER_SAVE_NAME))
+    with open(os.path.join(args.save_path, save_file), "w") as f:
         json.dump(results, f, indent=4)
     
-    print(f"Latency normalizer saved at {os.path.join(args.save_path, LATENCY_NORMALISER_SAVE_NAME)}")
+    print(f"Latency normalizer saved at {os.path.join(args.save_path, save_file)}")
     
-    with open(os.path.join(args.save_path, LATENCY_NORMALISER_SAVE_NAME), "r") as f:
+    with open(os.path.join(args.save_path, save_file), "r") as f:
         data = json.load(f)
     assert len(data) == NUM_TEST_AUDIOS, "Latency normalizer data is incorrect"        
         
