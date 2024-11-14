@@ -16,6 +16,6 @@ Run [limmits_latency_eval.py](limmits_latency_eval.py) to generate ``teamName_tr
 2. ``time_to_last_frame``: Time taken to produce last output speech frame (this is the time taken from first frame to last frame. If you are processing any text embeddings while continously producing frames, you should include it as well)
 3. ``num_frames``: Number of output frames generated
    
-You may refer to [limmits_latency_eval.py](limmits_latency_eval.py) on how to generate these values for your model, and how to save it. If you are not clear regarding the format or the data to store, contact us.
+You may refer to [limmits_latency_eval.py](limmits_latency_eval.py) on how to generate these values for your model, and how to save it. [iisc_track1_latency_normaliser.json](iisc_track1_latency_normaliser.json) is an example file with 2 entries for your reference. If you are not clear regarding the format or the data to store, contact us.
 
 Note: If you are using GPU to decode your model for the test set, use only 1 GPU and a batch size of 1. You must run [limmits_latency_eval.py](limmits_latency_eval.py) on the same hardware.
