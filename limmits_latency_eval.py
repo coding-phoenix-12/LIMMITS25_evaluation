@@ -17,7 +17,7 @@ parser.add_argument("--json_path", required=True, type=str, help="Path to the te
 parser.add_argument("--save_path", required=True, type=str, help="Path to the directory where the extracted latency will be saved")
 parser.add_argument("--device", default="cuda", type=str, help="Use the same GPU hardware that was used for test set synthesis")
 
-NUM_TEST_AUDIOS = 200
+NUM_TEST_AUDIOS = 96
 TEST_AUDIO_EXTN = ".wav"
 LATENCY_NORMALISER_SAVE_NAME = "latency_normaliser.json"
 ALLOWED_JSON_NAMES = ["track1", "track2", "track3"]
@@ -67,9 +67,14 @@ def eval_():
     
     for audio_file in test_audio_files:
         audio_path = os.path.join(args.test_set_generated_audios_path, audio_file)
-        audio = torchaudio.load(audio_path)[0].squeeze()
+        audio, sr = torchaudio.load(audio_path)
+        audio = audio.squeeze()
         assert audio.dim() == 1, "Audio should be single channel"
-        num_frames = audio.size(0) // 100 
+        
+        frame_rate = sr // 100
+        duration = audio.size(0) / sr
+        num_frames = int(duration * frame_rate)
+        
         save_name = audio_file.replace(TEST_AUDIO_EXTN, "")
         text = metadata[save_name]["text"]
         text_len = len(text)
